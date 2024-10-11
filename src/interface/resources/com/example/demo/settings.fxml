@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.SettingsController">
+   <children>
+      <Text layoutX="420.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color Vision Deficiency">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Text layoutX="572.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="DarkCheck" layoutX="691.0" layoutY="279.0" mnemonicParsing="false" onAction="#onDarkCheckClick" prefHeight="25.0" prefWidth="61.0" />
+      <Button fx:id="backButton" layoutX="63.0" layoutY="40.0" mnemonicParsing="false" onAction="#backClicked" prefHeight="66.0" prefWidth="109.0" style="-fx-background-color: none; -fx-font-size: 18;-fx-border-color: grey; -fx-border-width: 1; -fx-border-radius: 5;" text="⬅ Back" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Text layoutX="243.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accessibility">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="461.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Font Size">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="colorVision" layoutX="665.0" layoutY="173.0" onAction="#changeColorVision" prefHeight="13.0" prefWidth="95.0" promptText="None" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 13;">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="None" />
+               <String fx:value="daltonism" />
+               <String fx:value="tetartanopia" />
+               <String fx:value="monochromasia" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Text layoutX="459.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dark mode">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Slider fx:id="fontSlider" blockIncrement="5.0" cache="true" layoutX="646.0" layoutY="223.0" majorTickUnit="5.0" max="20.0" min="10.0" minorTickCount="1" prefHeight="48.0" prefWidth="152.0" showTickLabels="true" showTickMarks="true" value="14.0" />
+   </children>
+</Pane>

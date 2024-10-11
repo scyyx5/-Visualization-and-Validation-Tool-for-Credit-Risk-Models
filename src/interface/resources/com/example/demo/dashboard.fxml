@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<VBox fx:id="rootLayout" alignment="CENTER" prefHeight="800.0" prefWidth="1300.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DashboardController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <Pane fx:id="topPane" prefHeight="35.0" prefWidth="1175.0">
+      <children>
+         <Button fx:id="uploadDataButton" layoutX="999.0" mnemonicParsing="false" onMouseClicked="#uploadDataClicked" prefHeight="40.0" prefWidth="123.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-width: 1; -fx-border-radius: 5;" text="📂 Upload" />
+         <Button fx:id="SettengsButton" layoutX="1136.0" mnemonicParsing="false" onMouseClicked="#settingsClicked" prefHeight="40.0" prefWidth="123.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-width: 1; -fx-border-radius: 5;" text="⚙ Settings" />
+         <ImageView fx:id="nottinghamLogo" fitHeight="59.0" fitWidth="181.0" layoutX="14.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@nottinghamlogo.png" />
+            </image>
+         </ImageView>
+         <ImageView fx:id="nottinghamLogo1" fitHeight="35.0" fitWidth="42.0" layoutX="479.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@applogo.png" />
+            </image>
+         </ImageView>
+         <Label fx:id="title" layoutX="523.0" layoutY="8.0" prefHeight="27.0" prefWidth="246.0" text="Credit Risk Visualisation" textAlignment="CENTER">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </Label>
+          <ComboBox fx:id="language" layoutX="865.0" layoutY="7.0" onAction="#changeLanguage" prefHeight="13.0" prefWidth="105.0" promptText="English" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 13;">
+              <items>
+                  <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="English" />
+                      <String fx:value="简体中文" />
+                  </FXCollections>
+              </items>
+          </ComboBox>
+      </children>
+   </Pane>
+   <SplitPane fx:id="mainPane" dividerPositions="0.10913705583756345" prefHeight="500.0" prefWidth="1175.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" VBox.vgrow="ALWAYS">
+     <items>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="499.0" prefWidth="119.0" style="-fx-background-color: none;">
+            <children>
+               <Button fx:id="DefaultRateLabel" layoutX="5.0" layoutY="3.0" mnemonicParsing="false" onAction="#clickDefaultRate" prefHeight="51.0" prefWidth="123.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;" text="Default Rate" textAlignment="CENTER">
+               </Button>
+                <Button fx:id="LexisDiagramLabel" layoutX="5.0" layoutY="66.0" mnemonicParsing="false" onAction="#clickLexisDiagram" prefHeight="51.0" prefWidth="123.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;" text="Lexis Diagram">
+                </Button>
+                <Button fx:id="APCLabel" layoutX="5.0" layoutY="131.0" mnemonicParsing="false" onAction="#clickAPC" prefHeight="51.0" prefWidth="123.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;" text="APC analysis">
+                </Button>
+               <Pane layoutX="5.0" layoutY="199.0" prefHeight="242.0" prefWidth="123.0" style="-fx-border-color: grey; -fx-border-radius: 5;">
+                  <children>
+                     <Label fx:id="featureLabel" layoutX="36.0" layoutY="6.0" text="Feature" textAlignment="CENTER">
+                     </Label>
+                     <Label fx:id="conditionLabel" layoutX="31.0" layoutY="66.0" text="Condition" textAlignment="CENTER">
+                     </Label>
+                     <Label fx:id="valueLabel" layoutX="41.0" layoutY="124.0" text="Value" textAlignment="CENTER">
+                     </Label>
+                     <Button fx:id="goButton" layoutX="17.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#goButtonClicked" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-width: 1; -fx-border-radius: 5;" text="Go" />
+                     <TextField fx:id="featureText" layoutX="17.0" layoutY="26.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" />
+                     <ComboBox fx:id="conditionValue" layoutX="17.0" layoutY="84.0" onAction="#changeCondition" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;">
+                        <items>
+                           <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="&gt;" />
+                              <String fx:value="＜" />
+                           </FXCollections>
+                        </items>
+                     </ComboBox>
+                     <TextField fx:id="valueText" layoutX="17.0" layoutY="144.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" />
+                  </children>
+               </Pane>
+               <Pane layoutX="5.0" layoutY="466.0" prefHeight="117.0" prefWidth="123.0" style="-fx-border-color: grey; -fx-border-radius: 5;">
+                  <children>
+                     <Label fx:id="error" alignment="CENTER" layoutX="33.0" layoutY="10.0" prefHeight="18.0" prefWidth="56.0" text="Slope" textAlignment="CENTER">
+                     </Label>
+                     <TextField fx:id="ErrorText" layoutX="17.0" layoutY="31.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" />
+                     <Button fx:id="adjustButton" layoutX="17.0" layoutY="78.0" mnemonicParsing="false" onMouseClicked="#adjustButtonClicked" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-width: 1; -fx-border-radius: 5;" text="Adjust" />
+                  </children>
+               </Pane>
+               <Pane layoutX="5.0" layoutY="609.0" prefHeight="75.0" prefWidth="123.0" style="-fx-border-color: grey; -fx-border-radius: 5;">
+                  <children>
+                     <Label fx:id="scaleText" layoutX="45.0" layoutY="11.0" text="Scale" textAlignment="CENTER">
+                     </Label>
+                     <ComboBox fx:id="scale" layoutX="16.0" layoutY="31.0" onAction="#changeScale" prefHeight="30.0" prefWidth="90.0" promptText="1" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;">
+                        <items>
+                           <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="1" />
+                              <String fx:value="sinh" />
+                              <String fx:value="exp" />
+                           </FXCollections>
+                        </items>
+                     </ComboBox>
+                  </children>
+               </Pane>
+            </children>
+         </AnchorPane>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+               <Pane fx:id="APCPane" onMouseClicked="#clickLexisDiagram" prefHeight="700.0" prefWidth="1116.0">
+                  <children>
+                     <TabPane prefHeight="700.0" prefWidth="1117.0" style="-fx-background-color: none;" tabClosingPolicy="UNAVAILABLE">
+                        <tabs>
+                           <Tab fx:id="ageeffectID" text="age effect">
+                              <content>
+                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="646.0" prefWidth="1180.0">
+                                    <children>
+                                       <WebView fx:id="ageEffectWebView" layoutY="1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                 </AnchorPane>
+                              </content>
+                           </Tab>
+                           <Tab fx:id="periodeffectID" text="period effect">
+                              <content>
+                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="1327.0">
+                                    <children>
+                                       <WebView fx:id="periodEffectWebView" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                 </AnchorPane>
+                              </content>
+                           </Tab>
+                           <Tab fx:id="cohorteffectID" text="cohort effect">
+                             <content>
+                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                       <WebView fx:id="cohortEffectWebView" layoutY="-1.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                 </AnchorPane>
+                             </content>
+                           </Tab>
+                        </tabs>
+                     </TabPane>
+                  </children>
+               </Pane>
+               <Pane fx:id="DefaultRatePane" prefHeight="200.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                      <TabPane prefHeight="700.0" prefWidth="1117.0" style="-fx-background-color: none;" tabClosingPolicy="UNAVAILABLE">
+                          <Tab fx:id="ageID" text="age">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: none; -fx-border-color: none;">
+                                   <WebView fx:id="drAgeWebView" layoutY="-3.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                <CheckBox fx:id="drAgePredicted" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#ondrAgePredictedButtonClick" text="Predicted">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></CheckBox>
+                            </AnchorPane>
+                        </Tab>
+                        <Tab fx:id="calID" text="calendar time">
+                            <AnchorPane minHeight="0.0" minWidth="0.0">
+                                 <WebView fx:id="drCalWebView" layoutY="-2.0" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                <CheckBox fx:id="drCalPredicted" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#ondrCalPredictedButtonClick" text="Predicted">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></CheckBox>
+                                <!--
+                                <Button fx:id="dr_cal_pre" layoutX="246.0" layoutY="33.0" mnemonicParsing="false" onAction="#ondr_calPredictedButton" text="predicted" />
+                                -->
+                            </AnchorPane>
+                        </Tab>
+                    </TabPane>
+                </children>
+             </Pane>
+             <Pane fx:id="LexisDiagramPane" layoutY="19.0" onMouseClicked="#clickLexisDiagram" prefHeight="625.0" prefWidth="1041.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                     <TabPane prefHeight="700.0" prefWidth="1115.0" style="-fx-background-color: none;" tabClosingPolicy="UNAVAILABLE">
+                        <tabs>
+                           <Tab fx:id="preAPCID" text="APC by predicted data">
+                              <content>
+                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="512.0" prefWidth="1327.0" style="-fx-background-color: none;">
+                                    <children>
+                                       <WebView fx:id="APClexisDiagramWebView" layoutX="7.0" layoutY="-2.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: none;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                       <ComboBox fx:id="APCtheme" layoutX="14.0" layoutY="14.0" onAction="#changeAPCTheme" prefHeight="23.0" prefWidth="92.0" promptText="hot" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;">
+                                          <items>
+                                             <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="hot" />
+                                                <String fx:value="Green_Blue" />
+                                                <String fx:value="Oranges" />
+                                                <String fx:value="grey" />
+                                                 <String fx:value="yellows" />
+                                                 <String fx:value="greens" />
+                                                 <String fx:value="blues" />
+                                                 <String fx:value="Spectral" />
+                                                 <String fx:value="PiYG" />
+                                             </FXCollections>
+                                          </items>
+                                       </ComboBox>
+                                    </children>
+                                 </AnchorPane>
+                              </content>
+                           </Tab>
+                            <Tab fx:id="realAPCID" text="APC by real data">
+                                <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="512.0" prefWidth="1327.0" style="-fx-background-color: none;">
+                                        <children>
+                                            <WebView fx:id="realAPClexisDiagramWebView" layoutX="7.0" layoutY="-2.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: none;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <ComboBox fx:id="realAPCtheme" layoutX="14.0" layoutY="14.0" onAction="#changerealAPCTheme" prefHeight="23.0" prefWidth="92.0" promptText="hot" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;">
+                                                <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                        <String fx:value="hot" />
+                                                        <String fx:value="Green_Blue" />
+                                                        <String fx:value="Oranges" />
+                                                        <String fx:value="grey" />
+                                                        <String fx:value="yellows" />
+                                                        <String fx:value="greens" />
+                                                        <String fx:value="blues" />
+                                                        <String fx:value="Spectral" />
+                                                        <String fx:value="PiYG" />
+                                                    </FXCollections>
+                                                </items>
+                                            </ComboBox>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </Tab>
+                           <Tab fx:id="realID" text="real data">
+                              <content>
+                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="399.0" prefWidth="1327.0">
+                                    <children>
+                                     <WebView fx:id="lexisDiagramWebView" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                     <ComboBox fx:id="theme" layoutX="14.0" layoutY="14.0" onAction="#changeTheme" prefHeight="23.0" prefWidth="92.0" promptText="hot" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;">
+                                         <items>
+                                             <FXCollections fx:factory="observableArrayList">
+                                                 <String fx:value="hot" />
+                                                 <String fx:value="Green_Blue" />
+                                                 <String fx:value="Oranges" />
+                                                 <String fx:value="grey" />
+                                                 <String fx:value="yellows" />
+                                                 <String fx:value="greens" />
+                                                 <String fx:value="blues" />
+                                                 <String fx:value="Spectral" />
+                                                 <String fx:value="PiYG" />
+                                             </FXCollections>
+                                         </items>
+                                     </ComboBox>
+                                    </children>
+                                 </AnchorPane>
+                              </content>
+                           </Tab>
+                        </tabs>
+                     </TabPane>
+                </children></Pane>
+               <Pane fx:id="infoPane" layoutX="304.0" layoutY="142.0" style="-fx-border-width: 4; -fx-border-color: grey; -fx-border-radius: 10; -fx-background-color: white;">
+                  <children>
+                     <Text fx:id="separatorLabel" layoutX="58.0" layoutY="121.015625" strokeType="OUTSIDE" strokeWidth="0.0" text="separator">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Text>
+                     <Text fx:id="ageinfoLabel" layoutX="55.0" layoutY="156.015625" strokeType="OUTSIDE" strokeWidth="0.0" text="title of age">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Text>
+                     <Text fx:id="cohortinfoLabel" layoutX="52.0" layoutY="192.015625" strokeType="OUTSIDE" strokeWidth="0.0" text="title of cohort">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Text>
+                     <Text fx:id="perdicteddefaultinfoLabel" layoutX="10.0" layoutY="264.015625" strokeType="OUTSIDE" strokeWidth="0.0" text="title of predicted default rate">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Text>
+                     <Text fx:id="defaultflaginfoLabel" layoutX="36.0" layoutY="229.015625" strokeType="OUTSIDE" strokeWidth="0.0" text="title of default flag">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Text>
+                     <TextField fx:id="separatorText" alignment="CENTER" layoutX="246.0" layoutY="95.25" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" text="," />
+                     <TextField fx:id="ageText" alignment="CENTER" layoutX="246.0" layoutY="134.25" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" text="t" />
+                     <TextField fx:id="cohortText" alignment="CENTER" layoutX="246.0" layoutY="169.25" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" text="v" />
+                     <TextField fx:id="defaultFlagText" alignment="CENTER" layoutX="246.0" layoutY="206.25" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" text="y" />
+                     <TextField fx:id="predictedDefaultRateText" alignment="CENTER" layoutX="246.0" layoutY="242.25" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" text="pd" />
+                     <Text fx:id="infoTitleLabel" layoutX="124.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database information">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Text>
+                     <ComboBox fx:id="ageUnit" layoutX="350.0" layoutY="134.0" onAction="#changeAgeUnit" prefHeight="26.0" prefWidth="100.0" promptText="Month" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;">
+                        <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Month" />
+                              <String fx:value="Day" />
+                              <String fx:value="Year" />
+                          </FXCollections>
+                        </items>
+                     </ComboBox>
+                     <ComboBox fx:id="cohortUnit" layoutX="349.0" layoutY="170.25" onAction="#changeCohortUnit" prefHeight="23.0" prefWidth="100.0" promptText="Month" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5;">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Month" />
+                                <String fx:value="Day" />
+                                <String fx:value="Year" />
+                            </FXCollections>
+                        </items>
+                     </ComboBox>
+                     <Button fx:id="chooseFile" layoutX="136.0" layoutY="277.25" mnemonicParsing="false" onMouseClicked="#chooseFileClicked" prefHeight="42.0" prefWidth="142.0" style="-fx-background-color: none; -fx-border-color: grey; -fx-border-radius: 5; -fx-border-width: 1;" text="Choose File">
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Button>
+                     <Text fx:id="decimalLabel" layoutX="62.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="decimal">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Text>
+                     <TextField fx:id="decimalText" alignment="CENTER" layoutX="244.0" layoutY="62.0" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: none; -fx-border-width: 1; -fx-border-color: grey; -fx-border-radius: 5;" text="." />
+                  </children>
+               </Pane>
+               <Pane fx:id="loadingPane" layoutX="310.0" layoutY="135.0" prefHeight="328.0" prefWidth="371.0" style="-fx-border-width: 4; -fx-border-color: none; -fx-background-color: none;" visible="false">
+                  <children>
+                     <ImageView fx:id="loadingImage" fitHeight="150.0" fitWidth="200.0" layoutX="107.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@loading.png" />
+                        </image>
+                     </ImageView>
+                  </children>
+               </Pane>
+          </children>
+       </AnchorPane>
+   </items>
+ </SplitPane>
+</VBox>
